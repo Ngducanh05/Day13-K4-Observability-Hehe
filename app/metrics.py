@@ -12,7 +12,13 @@ TRAFFIC: int = 0
 QUALITY_SCORES: list[float] = []
 
 
-def record_request(latency_ms: int, cost_usd: float, tokens_in: int, tokens_out: int, quality_score: float) -> None:
+def record_request(
+    latency_ms: int,
+    cost_usd: float,
+    tokens_in: int,
+    tokens_out: int,
+    quality_score: float,
+) -> None:
     global TRAFFIC
     TRAFFIC += 1
     REQUEST_LATENCIES.append(latency_ms)
@@ -22,24 +28,28 @@ def record_request(latency_ms: int, cost_usd: float, tokens_in: int, tokens_out:
     QUALITY_SCORES.append(quality_score)
 
 
-
 def record_error(error_type: str) -> None:
     ERRORS[error_type] += 1
-
 
 
 def percentile(values: list[int], p: int) -> float:
     if not values:
         return 0.0
+    if not 0 <= p <= 100:
+        raise ValueError("p must be between 0 and 100")
     items = sorted(values)
     idx = max(0, min(len(items) - 1, round((p / 100) * len(items) + 0.5) - 1))
     return float(items[idx])
 
 
-
 def snapshot() -> dict:
+    total_errors = sum(ERRORS.values())
+    total_attempts = TRAFFIC + total_errors
+    error_rate_pct = (total_errors / total_attempts * 100) if total_attempts else 0.0
+
     return {
         "traffic": TRAFFIC,
+        "requests_total": total_attempts,
         "latency_p50": percentile(REQUEST_LATENCIES, 50),
         "latency_p95": percentile(REQUEST_LATENCIES, 95),
         "latency_p99": percentile(REQUEST_LATENCIES, 99),
@@ -47,6 +57,19 @@ def snapshot() -> dict:
         "total_cost_usd": round(sum(REQUEST_COSTS), 4),
         "tokens_in_total": sum(REQUEST_TOKENS_IN),
         "tokens_out_total": sum(REQUEST_TOKENS_OUT),
+        "error_count": total_errors,
+        "error_rate_pct": round(error_rate_pct, 4),
         "error_breakdown": dict(ERRORS),
         "quality_avg": round(mean(QUALITY_SCORES), 4) if QUALITY_SCORES else 0.0,
     }
+
+
+def reset() -> None:
+    global TRAFFIC
+    TRAFFIC = 0
+    REQUEST_LATENCIES.clear()
+    REQUEST_COSTS.clear()
+    REQUEST_TOKENS_IN.clear()
+    REQUEST_TOKENS_OUT.clear()
+    ERRORS.clear()
+    QUALITY_SCORES.clear()
