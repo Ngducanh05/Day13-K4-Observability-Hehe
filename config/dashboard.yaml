@@ -16,7 +16,6 @@ dashboard:
         aggregation: p95
         operator: lte
         value: 3000
-
     - id: traffic
       title: Request traffic
       source: data/logs.jsonl
@@ -29,7 +28,6 @@ dashboard:
         aggregation: rate_per_minute
         operator: gte
         value: 1
-
     - id: errors
       title: Error rate and breakdown
       source: data/logs.jsonl
@@ -42,7 +40,6 @@ dashboard:
         aggregation: error_rate_pct
         operator: lte
         value: 2
-
     - id: cost
       title: Cost over time
       source: data/logs.jsonl
@@ -55,7 +52,6 @@ dashboard:
         aggregation: total
         operator: lte
         value: 2.5
-
     - id: tokens
       title: Input and output tokens
       source: data/logs.jsonl
@@ -68,7 +64,6 @@ dashboard:
         aggregation: sum_by_field
         operator: lte
         value: 50000
-
     - id: quality
       title: Quality proxy
       source: data/logs.jsonl
