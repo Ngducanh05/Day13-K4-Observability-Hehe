@@ -4,13 +4,16 @@ slis:
   latency_p95_ms:
     objective: 3000
     target: 99.5
-    note: Replace with your group's target
+    note: "P95 <= 3000 ms; tail latency is the primary user-facing latency SLI."
   error_rate_pct:
     objective: 2
     target: 99.0
+    note: "Request failure rate should stay at or below 2%."
   daily_cost_usd:
     objective: 2.5
     target: 100.0
+    note: "Rolling 24-hour spend should stay within the lab cost budget."
   quality_score_avg:
     objective: 0.75
     target: 95.0
+    note: "Average quality proxy should remain at or above 0.75."
