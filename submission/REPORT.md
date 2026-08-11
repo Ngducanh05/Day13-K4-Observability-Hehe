@@ -8,11 +8,11 @@
 - Repository URL: https://github.com/Ngducanh05/Day13-K4-Observability-Hehe
 - Commit SHA cuối: `[RUNTIME EVIDENCE]`
 - Thành viên và vai trò:
-  - Role A — Middleware / Correlation ID
-  - Role B — PII / Redaction
-  - Role C — Metrics / Dashboard
-  - Role D — SRE / SLO / Alert / Runbook
-  - Role E — QA / Checkpoint 3 / Incident evidence
+  - Nguyễn Hải Anh — Middleware / Correlation ID
+  - Tô Ngọc Hải — PII / Redaction
+  - Nông Ngọc Dương — Metrics / Dashboard
+  - Nguyễn Đức Anh — SRE / SLO / Alert / Runbook
+  - Lê Thị Hải Yến — QA / Checkpoint 3 / Incident evidence
 
 ## 2. Kết quả kỹ thuật
 
@@ -87,8 +87,8 @@ Khi `rag_slow` bật, source retrieval cố ý chờ khoảng 2.5 giây. Vì thr
 
 | Thành viên | Phần việc | Commit/PR | Điều đã học |
 |---|---|---|---|
-| `[Tên A]` | Middleware/correlation | `[commit/PR]` | ContextVars |
-| `[Tên B]` | PII/redaction | `[commit/PR]` | Privacy |
-| `[Tên C]` | Metrics/dashboard | `[commit/PR]` | Percentile/SLI |
-| `[Tên D]` | SLO/alert/runbook | `[commit/PR]` | SRE |
-| `[Tên E]` | QA/CP3 | `[commit/PR]` | Incident evidence |
+| `[Nguyễn Hải Anh-2A202601670]` | Middleware/correlation | `[commit/PR]` | ContextVars |
+| `[Tô Ngọc Hải-2A202601686]` | PII/redaction | `[commit/PR]` | Privacy |
+| `[Nông Ngọc Dương-2A202601296]` | Metrics/dashboard | `[commit/PR]` | Percentile/SLI |
+| `[Nguyễn Đức Anh-2A202601870]` | SLO/alert/runbook | `[commit/PR]` | SRE |
+| `[Lê Thị Hải Yến-2A202601570]` | QA/CP3 | `[commit/PR]` | Incident evidence |
